@@ -9,17 +9,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Data
-@Document(collection = "expense")
-public class IncomeExpensesEntity {
+@Document(collection = "budget")
+public class BudgetEntity {
 
     @Id
     private String id;
-
     private String userId;
-    private String type;
-    private String category;
+    private String name;
     private double amount;
-    private  String description;
+    private String currency;
+    private String category;
 
     @CreatedDate
     private LocalDateTime createdAt;

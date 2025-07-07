@@ -44,9 +44,12 @@ public class IncomeExpenseService {
     }
 
     public List<IncomeExpenseResponseDTO> getEntriesListForUser(String userId) {
-        return repositoty.findByUserId(userId)
+
+        List<IncomeExpenseResponseDTO> expenseList = repositoty.findByUserId(userId)
                 .stream()
                 .map(this::mapToResponseDTO)
                 .collect(Collectors.toList());
+        System.out.println("Expense List: "+expenseList);
+        return expenseList;
     }
 }
