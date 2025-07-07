@@ -27,8 +27,9 @@ public class IncomeExpenseController {
         IncomeExpenseResponseDTO response = incomeExpenseService.addEntry(incomeExpenseReqDTO,userId);
         return ResponseEntity.ok(response);
     }
-    @GetMapping("query")
+    @GetMapping("/query")
     public  ResponseEntity<?> getEntry(@RequestHeader("userId") String userId){
+        System.out.println("User Id:"+userId);
         return ResponseEntity.ok(incomeExpenseService.getEntriesListForUser(userId));
     }
 

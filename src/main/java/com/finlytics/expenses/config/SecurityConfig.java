@@ -17,25 +17,6 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf(csrf -> csrf.disable())
-//                .authorizeHttpRequests(auth -> auth
-//                        .anyRequest().authenticated()
-//                )
-//                .addFilterBefore((request, response, chain) -> {
-//                    HttpServletRequest httpRequest = (HttpServletRequest) request;
-//                    HttpServletResponse httpResponse = (HttpServletResponse) response;
-//                    String header = httpRequest.getHeader(INTERNAL_HEADER);
-//                    if (!INTERNAL_SECRET.equals(header)) {
-//                        httpResponse.setStatus(401);
-//                        httpResponse.getWriter().write("Unauthorized - Invalid Gateway Token");
-//                        return;
-//                    }
-//                    chain.doFilter(request, response);
-//                }, UsernamePasswordAuthenticationFilter.class)
-//                .httpBasic(Customizer.withDefaults());
-//
-//        return http.build();
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth

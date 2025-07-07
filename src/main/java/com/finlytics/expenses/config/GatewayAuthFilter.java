@@ -11,7 +11,7 @@ import java.io.IOException;
 @Component
 public class GatewayAuthFilter implements Filter{
 
-    private static final String INTERNAL_KEY = "secret-key-123";
+    private static final String INTERNAL_KEY = "super-secret-123";
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
