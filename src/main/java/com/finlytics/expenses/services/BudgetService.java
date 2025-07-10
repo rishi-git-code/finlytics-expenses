@@ -18,7 +18,7 @@ public class BudgetService {
         BudgetEntity budget = new BudgetEntity();
         budget.setUserId(userId);
         budget.setName(reqDTO.getName());
-        budget.setCategory(reqDTO.getCategory());
+
         budget.setAmount(reqDTO.getAmount());
         budget.setCurrency(reqDTO.getCurrency());
 
@@ -30,9 +30,8 @@ public class BudgetService {
     private List<BudgetResDTO> mapToResponse(BudgetEntity record) {
         List<BudgetResDTO> budgetResList = new ArrayList<BudgetResDTO>();
         BudgetResDTO budgetResDTO = new BudgetResDTO();
-        budgetResDTO.setId(record.getId());
+        budgetResDTO.setBudgetId(record.getBudgetId());
         budgetResDTO.setName(record.getName());
-        budgetResDTO.setCategory(record.getCategory());
         budgetResDTO.setAmount(record.getAmount());
         budgetResDTO.setCurrency(record.getCurrency());
         budgetResList.add(budgetResDTO);

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class IncomeExpenseResponseDTO {
 
-    private String id;
+    private String expenseId;
     private String type;
     private String category;
     private double amount;

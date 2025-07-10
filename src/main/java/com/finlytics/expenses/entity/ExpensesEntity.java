@@ -7,19 +7,20 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Document(collection = "expense")
-public class IncomeExpensesEntity {
+public class ExpensesEntity {
 
     @Id
-    private String id;
+    private String expenseId;
 
     private String userId;
     private String type;
-    private String category;
     private double amount;
     private  String description;
+    private List<CategoryEntity> categoryEntities;
 
     @CreatedDate
     private LocalDateTime createdAt;
