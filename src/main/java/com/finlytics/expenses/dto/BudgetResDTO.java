@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class BudgetResDTO {
-    private String id;
+    private String budgetId;
     private String userId;
     private String name;
     private double amount;

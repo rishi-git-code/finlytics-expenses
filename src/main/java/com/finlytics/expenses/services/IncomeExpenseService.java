@@ -2,8 +2,8 @@ package com.finlytics.expenses.services;
 
 import com.finlytics.expenses.dto.IncomeExpenseReqDTO;
 import com.finlytics.expenses.dto.IncomeExpenseResponseDTO;
-import com.finlytics.expenses.entity.IncomeExpensesEntity;
-import com.finlytics.expenses.repository.IncomeExpenseRepository;
+import com.finlytics.expenses.entity.ExpensesEntity;
+import com.finlytics.expenses.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,27 +14,27 @@ import java.util.stream.Collectors;
 public class IncomeExpenseService {
 
     @Autowired
-    private IncomeExpenseRepository repositoty;
+    private ExpenseRepository repositoty;
 
     public IncomeExpenseResponseDTO addEntry(IncomeExpenseReqDTO incomeExpenseReqDTO, String userId) {
-        IncomeExpensesEntity entity = new IncomeExpensesEntity();
+        ExpensesEntity entity = new ExpensesEntity();
         entity.setUserId(userId);
         entity.setType(incomeExpenseReqDTO.getType());
-        entity.setCategory(incomeExpenseReqDTO.getCategory());
+
         entity.setAmount(incomeExpenseReqDTO.getAmount());
         entity.setDescription(incomeExpenseReqDTO.getDescription());
 
-        IncomeExpensesEntity savedData = repositoty.save(entity);
+        ExpensesEntity savedData = repositoty.save(entity);
 
         return mapToResponseDTO(savedData);
     }
 
-    private IncomeExpenseResponseDTO mapToResponseDTO(IncomeExpensesEntity savedData) {
+    private IncomeExpenseResponseDTO mapToResponseDTO(ExpensesEntity savedData) {
 
         IncomeExpenseResponseDTO responseDTO = new IncomeExpenseResponseDTO();
-        responseDTO.setId(savedData.getId());
+        responseDTO.setExpenseId(savedData.getExpenseId());
         responseDTO.setType(savedData.getType());
-        responseDTO.setCategory(savedData.getCategory());
+
         responseDTO.setAmount(savedData.getAmount());
         responseDTO.setDescription(savedData.getDescription());
         responseDTO.setCreatedAt(savedData.getCreatedAt());
