@@ -4,6 +4,7 @@ import com.finlytics.expenses.dto.BudgetReqDTO;
 import com.finlytics.expenses.dto.BudgetResDTO;
 import com.finlytics.expenses.entity.BudgetEntity;
 import com.finlytics.expenses.repository.BudgetRepository;
+import com.finlytics.expenses.utils.ExpenseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -14,7 +15,13 @@ public class BudgetService {
     @Autowired
     private BudgetRepository budgetRepository;
 
+    @Autowired
+    private ExpenseUtils expenseUtils;
+
     public List<BudgetResDTO> createBudget(BudgetReqDTO reqDTO, String userId) {
+        if (!expenseUtils.isValidUser(userId)) {
+            throw new RuntimeException("User not found");
+        }
         BudgetEntity budget = new BudgetEntity();
         budget.setUserId(userId);
         budget.setName(reqDTO.getName());
